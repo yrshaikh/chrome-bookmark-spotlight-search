@@ -13,7 +13,7 @@ function flattenBookmarks(bookmarks) {
     const bookmark = bookmarks[i];
     if (bookmark.url) {
       flatennedBookmarks.push({
-        title: bookmark.title,
+        title: bookmark.title.toLowerCase(),
         url: bookmark.url
       });
       //console.log("bookmark: " + bookmark.title + " ~  " + bookmark.url);

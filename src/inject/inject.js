@@ -22,16 +22,17 @@ chrome.extension.sendMessage({}, function(response) {
   };
 
   const getSpotlightDom = function() {
-    const dom = "<div><input type='text' id='cext-spotlight-textbox' /></div>";
+    const dom =
+      "<div><input type='text' id='cext-spotlight-textbox' /><div id='cext-spotlight-results'></div></div>";
     return dom;
   };
 
   const addEventListeners = function() {
-    document.addEventListener("keydown", function(e) {
-      if (e.code === "ShiftLeft") {
-        alert("do something");
-      }
-    });
+    // document.addEventListener("keydown", function(e) {
+    //   if (e.code === "ShiftLeft") {
+    //     alert("do something");
+    //   }
+    // });
     const searchTextBox = document.getElementById("cext-spotlight-textbox");
     searchTextBox.addEventListener("keydown", function(e) {
       searchBookmarks(e.target.value);
@@ -39,29 +40,43 @@ chrome.extension.sendMessage({}, function(response) {
   };
 
   const searchBookmarks = function(searchTerm) {
-    chrome.extension.sendMessage({action:"get-bookmarks"}, function(response){
+    chrome.extension.sendMessage({ action: "get-bookmarks" }, function(
+      response
+    ) {
       console.log("bookmarks =", response);
-      const aa = process_bookmark(response);
+      const results = getFilteredResults(searchTerm, response.bookmarks);
+      console.log(results);
+      renderResults(results);
     });
-    console.log("searchTerm", searchTerm);
   };
 
-  function process_bookmark(bookmarks) {
-    let bookmarkList = [];
+  function getFilteredResults(searchTerm, bookmarks) {
+    console.log(searchTerm, bookmarks);
+    const matches = [];
+    searchTerm = searchTerm.toLowerCase();
     for (let i = 0; i < bookmarks.length; i++) {
       const bookmark = bookmarks[i];
-      if (bookmark.url) {
-        bookmarkList.push({
-          title: bookmark.title,
-          url: bookmark.url
-        });
-        console.log("bookmark: " + bookmark.title + " ~  " + bookmark.url);
+      if (
+        bookmark.url.indexOf(searchTerm) !== -1 ||
+        bookmark.title.indexOf(searchTerm) !== -1
+      ) {
+        matches.push(bookmark);
       }
-
-      if (bookmark.children) {
-        process_bookmark(bookmark.children);
-      }
-      return bookmarkList;
     }
+    return matches;
+  }
+
+  function renderResults(results) {
+    const resultDom = document.getElementById("cext-spotlight-results");
+    resultDom.innerHTML = "";
+    const ul = document.createElement("ul");
+    ul.id = "cext-spotlight-result-ul";
+    for (let i = 0; i < results.length; i++) {
+      const li = document.createElement("li");
+      li.id = "cext-spotlight-result-li";
+      li.textContent = results[i].title;
+      ul.appendChild(li);
+    }
+    resultDom.appendChild(ul);
   }
 });
