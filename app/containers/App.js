@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import debounce from 'lodash/debounce';
 import uniqBy from 'lodash/uniqBy';
 import SearchBar from '../components/SearchBar';
-import MemeList from '../components/MemeList';
+import List from '../components/List';
 import { SHOW_ALL } from '../constants/SearchFilters';
 import style from './App.css';
 
@@ -83,7 +83,7 @@ export default class App extends Component {
         ref={(node) => { this.rootNode = node; }}
       >
         <SearchBar onInputChange={debounceInputHandler(350)} />
-        <MemeList
+        <List
           items={this.state.items}
           filter={this.state.filter}
           loadFunction={this.loadItems}

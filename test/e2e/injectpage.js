@@ -24,7 +24,7 @@ describe('inject page', function test() {
 
   it('should render inject app', async () => {
     await driver.wait(
-      () => driver.findElements(By.id('meme-search-frame'))
+      () => driver.findElements(By.id('bookmark-search-frame'))
         .then(elems => elems.length > 0),
       10000,
       'Inject app not found'

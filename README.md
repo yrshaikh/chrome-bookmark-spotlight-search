@@ -8,7 +8,7 @@ yarn install
 yarn run dev
 ```
 
-[Load unpacked extensions](https://developer.chrome.com/extensions/getstarted#unpacked) with `./dev` folder.
+ [Load unpacked extensions](https://developer.chrome.com/extensions/getstarted#unpacked) with `./dev` folder.
 
 ## Test
 

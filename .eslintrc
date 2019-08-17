@@ -17,9 +17,9 @@
     "consistent-return": 0,
     "comma-dangle": 0,
     "spaced-comment": 0,
-    "global-require": 0
+    "global-require": 0,
+    "arrow-parens": 0,
+    "quotes": "off"
   },
-  "plugins": [
-    "react"
-  ]
+  "plugins": ["react"]
 }

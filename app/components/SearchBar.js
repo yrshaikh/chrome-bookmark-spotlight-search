@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { func } from 'prop-types';
-import style from './SearchBar.css';
+import React, { Component } from "react";
+import { func } from "prop-types";
+import style from "./SearchBar.css";
 
 export default class SearchBar extends Component {
   static propTypes = {
@@ -9,29 +9,19 @@ export default class SearchBar extends Component {
 
   static defaultProps = {
     onInputChange: () => {}
-  }
+  };
 
   constructor(props) {
     super(props);
 
-    const randomPlaceholder = () => {
-      const placeholders = [
-        'THAT\'S A PENIS', 'I KNOW THAT FEEL BRO', 'DAMN, GIRL', 'BORN TO FEEL',
-        'THANKS CAPTAIN', 'THAT\'S RACIST', 'NOBODY CARES', 'DUDE WHAT',
-        'SUCH WOW. MUCH MEME.', 'SHUT UP AND TAKE MY MONEY', 'MIND IF I COMB OVER?',
-        'BITCH PLEASE'
-      ];
-      return placeholders[Math.floor(Math.random() * placeholders.length)];
-    };
-
-    this.placeholder = randomPlaceholder();
+    this.placeholder = "Bookmark Search";
   }
 
-  keyPressHandler = (event) => {
-    if (event.key === 'Enter') {
+  keyPressHandler = event => {
+    if (event.key === "Enter") {
       this.props.onInputChange(event);
     }
-  }
+  };
 
   render() {
     return (
@@ -43,7 +33,7 @@ export default class SearchBar extends Component {
           /* eslint jsx-a11y/tabindex-no-positive: 0 */
           tabIndex={1}
           autoFocus
-          id={'meme-search-input'}
+          id={"bookmark-search-input"}
         />
       </div>
     );

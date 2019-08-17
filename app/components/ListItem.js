@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { object } from 'prop-types';
-import style from './MemeListItem.css';
+import style from './ListItem.css';
 
-export default class MemeListItem extends Component {
+export default class ListItem extends Component {
   static propTypes = {
     item: object.isRequired
   }

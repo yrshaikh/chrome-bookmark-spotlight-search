@@ -4,9 +4,9 @@ import InfiniteScroll from 'react-infinite-scroller';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import AlertContainer from 'react-alert';
 import { SHOW_ALL, SHOW_GIF, SHOW_PHOTO } from '../constants/SearchFilters';
-import MemeListItem from './MemeListItem';
+import ListItem from './ListItem';
 import { scrollLock, scrollRelease } from '../helpers/ScrollEvents';
-import style from './MemeList.css';
+import style from './List.css';
 
 const SEARCH_FILTER_FUNCTIONS = {
   [SHOW_ALL]: () => true,
@@ -14,7 +14,7 @@ const SEARCH_FILTER_FUNCTIONS = {
   [SHOW_PHOTO]: item => item.type === 'PHOTO'
 };
 
-export default class MemeList extends Component {
+export default class List extends Component {
   static propTypes = {
     items: array.isRequired,
     filter: string,
@@ -74,7 +74,7 @@ export default class MemeList extends Component {
           {filteredItems.map(item =>
             <CopyToClipboard text={item.animatedUrl} key={item.id}>
               <div style={{ cursor: 'pointer' }} onClick={this.showCopyNotification}>
-                <MemeListItem item={item} />
+                <ListItem item={item} />
               </div>
             </CopyToClipboard>
           )}
