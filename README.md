@@ -32,6 +32,3 @@ yarn run test-e2e
 # Build files to './build'
 yarn run build
 ```
-
-## LICENSE
-[MIT](https://github.com/smddzcy/chrome-meme-search/blob/master/LICENSE)
