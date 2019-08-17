@@ -38,30 +38,30 @@ chrome.extension.sendMessage({}, function(response) {
     });
   };
 
-  const loadBookmarks = function() {
-    const bookmarkList = [];
+  const searchBookmarks = function(searchTerm) {
+    chrome.extension.sendMessage({action:"get-bookmarks"}, function(response){
+      console.log("bookmarks =", response);
+      const aa = process_bookmark(response);
+    });
+    console.log("searchTerm", searchTerm);
+  };
+
+  function process_bookmark(bookmarks) {
+    let bookmarkList = [];
     for (let i = 0; i < bookmarks.length; i++) {
-      bookmarkList.push(bookmarks[i]);
       const bookmark = bookmarks[i];
       if (bookmark.url) {
+        bookmarkList.push({
+          title: bookmark.title,
+          url: bookmark.url
+        });
         console.log("bookmark: " + bookmark.title + " ~  " + bookmark.url);
       }
 
       if (bookmark.children) {
-        loadBookmarks(bookmark.children);
+        process_bookmark(bookmark.children);
       }
-      console.log(bookmarkList);
       return bookmarkList;
     }
-  };
-
-  const searchBookmarks = function(searchTerm) {
-    chrome.extension.sendMessage({action:"getstorage"}, function(response){
-      console.log("wha?", response);
-    });
-    console.log("searchTerm", searchTerm);
-    chrome.bookmarks.get(searchTerm, function(a, b, c) {
-      console.log("search found");
-    });
-  };
+  }
 });
