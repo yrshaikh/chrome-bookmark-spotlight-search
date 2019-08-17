@@ -1,0 +1,52 @@
+{
+  "name": "Chrome Bookmark Spotlight Search",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Chrome Bookmark Spotlight Search",
+  "homepage_url": "http://extensionizr.com",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "page": "src/bg/background.html",
+    "persistent": true
+  },
+  "permissions": ["bookmarks", "history"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/*"],
+      "css": ["src/inject/inject.css"]
+    },
+    {
+      "matches": ["https://www.google.com/*"],
+      "js": ["src/inject/inject.js"]
+    }
+  ],
+  "commands": {
+    "toggle-feature-foo": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Toggle feature foo"
+    },
+    "_execute_browser_action": {
+      "suggested_key": {
+        "windows": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y",
+        "chromeos": "Ctrl+Shift+U",
+        "linux": "Ctrl+Shift+J"
+      }
+    },
+    "_execute_page_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+E",
+        "windows": "Alt+Shift+P",
+        "mac": "Alt+Shift+P"
+      }
+    }
+  }
+}
