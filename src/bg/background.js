@@ -14,6 +14,7 @@ function flattenBookmarks(bookmarks) {
     if (bookmark.url) {
       flatennedBookmarks.push({
         title: bookmark.title.toLowerCase(),
+        orignalTitle: bookmark.title,
         url: bookmark.url
       });
       //console.log("bookmark: " + bookmark.title + " ~  " + bookmark.url);

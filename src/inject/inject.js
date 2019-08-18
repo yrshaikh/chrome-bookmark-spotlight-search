@@ -23,7 +23,10 @@ chrome.extension.sendMessage({}, function(response) {
 
   const getSpotlightDom = function() {
     const dom =
-      "<div><input type='text' id='cext-spotlight-textbox' /><div id='cext-spotlight-results'></div></div>";
+      "<div class='cext-spotlight-textbox-wrapper'>" +
+      "<input type='text' id='cext-spotlight-textbox' placeholder='Search bookmarks' /><" +
+      "</div>" +
+      "<div id='cext-spotlight-results'></div>";
     return dom;
   };
 
@@ -74,7 +77,18 @@ chrome.extension.sendMessage({}, function(response) {
     for (let i = 0; i < results.length; i++) {
       const li = document.createElement("li");
       li.id = "cext-spotlight-result-li";
-      li.textContent = results[i].title;
+
+      const liDivItem1 = document.createElement("div");
+      liDivItem1.className = "cext-spotlight-result-li-title";
+      liDivItem1.textContent = results[i].orignalTitle;
+
+      const liDivItem2 = document.createElement("div");
+      liDivItem2.textContent = results[i].url;
+      liDivItem2.className = "cext-spotlight-result-li-url";
+
+      li.appendChild(liDivItem1);
+      li.appendChild(liDivItem2);
+
       ul.appendChild(li);
     }
     resultDom.appendChild(ul);

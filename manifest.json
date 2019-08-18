@@ -14,14 +14,19 @@
     "page": "src/bg/background.html",
     "persistent": true
   },
-  "permissions": ["bookmarks", "history"],
+  "permissions": [
+    "bookmarks",
+    "history",
+    "http://fonts.googleapis.com/",
+    "https://fonts.googleapis.com/"
+  ],
   "content_scripts": [
     {
-      "matches": ["https://www.google.com/*"],
+      "matches": ["https://www.google.com/*", "https://dribbble.com/*"],
       "css": ["src/inject/inject.css"]
     },
     {
-      "matches": ["https://www.google.com/*"],
+      "matches": ["https://www.google.com/*", "https://dribbble.com/*"],
       "js": ["src/inject/inject.js"]
     }
   ],
