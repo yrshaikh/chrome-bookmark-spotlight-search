@@ -16,6 +16,7 @@ chrome.extension.sendMessage({}, function(response) {
 
   let currentSearchTerm = "";
   let currentResults = [];
+  let currentLiSelectionIndex = -1;
 
   const createSpotlight = function() {
     const spotlight = document.createElement("div");
@@ -41,9 +42,9 @@ chrome.extension.sendMessage({}, function(response) {
     });
     const searchTextBox = document.getElementById("cext-spotlight-textbox");
     searchTextBox.addEventListener("keyup", function(e) {
-      if (e.code === "ArrowDown") {
+      if (e.code === "ArrowDown" || e.code === "ArrowUp") {
         if (currentResults.length !== 0) {
-          onArrowDown();
+          rotateLiSelection(e.code === "ArrowDown");
         }
       } else if (e.code === "NumpadEnter" || e.code === "Enter") {
         redirect();
@@ -67,7 +68,6 @@ chrome.extension.sendMessage({}, function(response) {
   };
 
   const getFilteredResults = function(searchTerm, bookmarks) {
-    console.log(searchTerm, bookmarks);
     const matches = [];
     searchTerm = searchTerm.toLowerCase();
     for (let i = 0; i < bookmarks.length; i++) {
@@ -89,15 +89,17 @@ chrome.extension.sendMessage({}, function(response) {
     ul.id = "cext-spotlight-result-ul";
     for (let i = 0; i < results.length; i++) {
       const li = document.createElement("li");
-      li.id = "cext-spotlight-result-li";
+      li.className = "cext-spotlight-result-li";
       li.setAttribute("data-url", results[i].url);
       if (i === 0) {
-        li.className = "cext-spotlight-result-li-selected";
+        li.className += " cext-spotlight-result-li-selected";
+        currentLiSelectionIndex = i;
       }
 
       const liDivItem0 = document.createElement("img");
       liDivItem0.className = "cext-spotlight-result-li-favicon";
       liDivItem0.setAttribute("src", getFaviconUrl(results[i].url));
+      // todo: add default favicon, if not present.
 
       const liDivItem1 = document.createElement("div");
       liDivItem1.className = "cext-spotlight-result-li-title";
@@ -135,5 +137,36 @@ chrome.extension.sendMessage({}, function(response) {
     window.location.href = href;
   };
 
-  const onArrowDown = function() {};
+  const rotateLiSelection = function(isDownArrow) {
+    const results = document.getElementsByClassName("cext-spotlight-result-li");
+
+    let updatedIndex;
+
+    if (isDownArrow) {
+      if (currentLiSelectionIndex === results.length - 1) {
+        currentLiSelectionIndex = -1;
+      }
+      updatedIndex = currentLiSelectionIndex;
+      for (let i = 0; i < results.length; i++) {
+        results[i].classList.remove("cext-spotlight-result-li-selected");
+        if (i === currentLiSelectionIndex + 1) {
+          results[i].className += " cext-spotlight-result-li-selected";
+          updatedIndex = i;
+        }
+      }
+    } else {
+      if (currentLiSelectionIndex === 0) {
+        currentLiSelectionIndex = results.length;
+      }
+      updatedIndex = currentLiSelectionIndex;
+      for (let i = results.length - 1; i >= 0; i--) {
+        results[i].classList.remove("cext-spotlight-result-li-selected");
+        if (i === currentLiSelectionIndex - 1) {
+          results[i].className += " cext-spotlight-result-li-selected";
+          updatedIndex = i;
+        }
+      }
+    }
+    currentLiSelectionIndex = updatedIndex;
+  };
 });

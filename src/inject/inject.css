@@ -47,7 +47,7 @@
   list-style: none;
 }
 
-#cext-spotlight-result-li {
+.cext-spotlight-result-li {
   padding: 15px 60px;
   font-size: 18px;
   color: #bababa;
