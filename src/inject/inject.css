@@ -7,13 +7,12 @@
   background: #323232;
   position: absolute;
   width: 50%;
-  top: 100px;
+  top: 50px;
   left: 25%;
   border: 1px solid #373a3f;
   border-radius: 3px;
   z-index: 9999999;
 }
-
 .cext-spotlight-textbox-icon {
   height: 50px;
   position: absolute;
@@ -24,19 +23,20 @@
 #cext-spotlight-textbox {
   color: #bababa;
   font-family: "Lato", "Segoe UI", "Arial", serif;
-  font-size: 18px !important;
+  font-size: 16px !important;
   font-weight: normal !important;
   display: inline-block;
-  height: 70px;
+  height: 50px;
   box-sizing: border-box;
   outline: none;
   border: 0px;
-  padding-left: 60px;
+  padding-left: 20px;
   transition: all 0.1s ease-out;
   background: #323232
     url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkViZW5lXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjIuNyAyMi41IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyMi43IDIyLjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxjaXJjbGUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY2NzY2IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgY3g9IjguMSIgY3k9IjguNCIgcj0iNi44Ii8+PGxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY2NzY2IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgeDE9IjEzLjIiIHkxPSIxMi45IiB4Mj0iMjEuNSIgeTI9IjIxLjQiLz48L3N2Zz4=)
-    no-repeat left 15px center;
-  background-size: 7%;
+    no-repeat right 15px center;
+  background-size: 3%;
+  width: 100%;
 }
 
 #cext-spotlight-results {
@@ -48,14 +48,14 @@
 }
 
 .cext-spotlight-result-li {
-  padding: 15px 60px;
+  padding: 15px 20px;
   font-size: 18px;
   color: #bababa;
 }
 .cext-spotlight-result-li-favicon {
   position: absolute;
   left: 15px;
-  height: 30px;
+  height: 20px;
   margin-top: 7px;
 }
 .cext-spotlight-result-li-selected {
@@ -63,9 +63,18 @@
   color: #fff;
 }
 
-.cext-spotlight-result-li-title {
-  font-size: 18px !important;
-}
+.cext-spotlight-result-li-title,
 .cext-spotlight-result-li-url {
   font-size: 14px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cext-spotlight-result-li-url {
+  font-size: 12px !important;
+}
+.cext-spotlight-results-count {
+  color: #b5b53f;
+  padding: 10px 20px;
+  border-top: 1px solid #646464;
 }

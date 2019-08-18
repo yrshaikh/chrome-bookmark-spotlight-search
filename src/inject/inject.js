@@ -16,6 +16,8 @@ chrome.extension.sendMessage({}, function(response) {
 
   let currentSearchTerm = "";
   let currentResults = [];
+  const maxAllowedFilteredResultCount = 6;
+  let currentFilteredResultsCount = 0;
   let currentLiSelectionIndex = -1;
 
   const createSpotlight = function() {
@@ -39,9 +41,6 @@ chrome.extension.sendMessage({}, function(response) {
       if (e.code === "Backquote") {
         alert("todo show/hide");
       }
-    });
-    const searchTextBox = document.getElementById("cext-spotlight-textbox");
-    searchTextBox.addEventListener("keyup", function(e) {
       if (e.code === "ArrowDown" || e.code === "ArrowUp") {
         if (currentResults.length !== 0) {
           rotateLiSelection(e.code === "ArrowDown");
@@ -49,7 +48,9 @@ chrome.extension.sendMessage({}, function(response) {
       } else if (e.code === "NumpadEnter" || e.code === "Enter") {
         redirect();
       }
-
+    });
+    const searchTextBox = document.getElementById("cext-spotlight-textbox");
+    searchTextBox.addEventListener("keyup", function(e) {
       if (currentSearchTerm !== e.target.value) {
         currentSearchTerm = e.target.value;
         searchBookmarks(e.target.value);
@@ -69,6 +70,7 @@ chrome.extension.sendMessage({}, function(response) {
 
   const getFilteredResults = function(searchTerm, bookmarks) {
     const matches = [];
+    currentFilteredResultsCount = 0;
     searchTerm = searchTerm.toLowerCase();
     for (let i = 0; i < bookmarks.length; i++) {
       const bookmark = bookmarks[i];
@@ -76,7 +78,13 @@ chrome.extension.sendMessage({}, function(response) {
         bookmark.url.indexOf(searchTerm) !== -1 ||
         bookmark.title.indexOf(searchTerm) !== -1
       ) {
-        matches.push(bookmark);
+        currentFilteredResultsCount++;
+        if (
+          true ||
+          currentFilteredResultsCount < maxAllowedFilteredResultCount
+        ) {
+          matches.push(bookmark);
+        }
       }
     }
     return matches;
@@ -85,6 +93,10 @@ chrome.extension.sendMessage({}, function(response) {
   const renderResults = function(results) {
     const resultDom = document.getElementById("cext-spotlight-results");
     resultDom.innerHTML = "";
+    resultDom.innerHTML =
+      "<div class='cext-spotlight-results-count'>Found " +
+      currentFilteredResultsCount +
+      " matching bookmarks</div>";
     const ul = document.createElement("ul");
     ul.id = "cext-spotlight-result-ul";
     for (let i = 0; i < results.length; i++) {
@@ -96,10 +108,13 @@ chrome.extension.sendMessage({}, function(response) {
         currentLiSelectionIndex = i;
       }
 
-      const liDivItem0 = document.createElement("img");
-      liDivItem0.className = "cext-spotlight-result-li-favicon";
-      liDivItem0.setAttribute("src", getFaviconUrl(results[i].url));
-      // todo: add default favicon, if not present.
+      // const liDivItem0 = document.createElement("img");
+      // liDivItem0.className = "cext-spotlight-result-li-favicon";
+      // liDivItem0.setAttribute(
+      //   "onerror",
+      //   "this.onerror=null;this.src='https://cdn1.iconfinder.com/data/icons/company-identity/100/new-google-favicon-512.png'"
+      // );
+      // liDivItem0.setAttribute("src", getFaviconUrl(results[i].url));
 
       const liDivItem1 = document.createElement("div");
       liDivItem1.className = "cext-spotlight-result-li-title";
@@ -109,7 +124,7 @@ chrome.extension.sendMessage({}, function(response) {
       liDivItem2.textContent = results[i].url;
       liDivItem2.className = "cext-spotlight-result-li-url";
 
-      li.appendChild(liDivItem0);
+      //li.appendChild(liDivItem0);
       li.appendChild(liDivItem1);
       li.appendChild(liDivItem2);
 
