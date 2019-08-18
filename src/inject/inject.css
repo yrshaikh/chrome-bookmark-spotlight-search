@@ -13,6 +13,10 @@
   border-radius: 3px;
   z-index: 9999999;
 }
+
+.cext-spotlight-wrapper-disabled {
+  display: none;
+}
 .cext-spotlight-textbox-icon {
   height: 50px;
   position: absolute;
@@ -45,6 +49,7 @@
 #cext-spotlight-result-ul {
   border-top: 1px solid #646464;
   list-style: none;
+  margin-left: 0px;
 }
 
 .cext-spotlight-result-li {

@@ -23,6 +23,7 @@ chrome.extension.sendMessage({}, function(response) {
   const createSpotlight = function() {
     const spotlight = document.createElement("div");
     spotlight.id = "cext-spotlight-wrapper";
+    spotlight.className = "cext-spotlight-wrapper-disabled";
     spotlight.innerHTML = getSpotlightDom();
     return spotlight;
   };
@@ -39,7 +40,13 @@ chrome.extension.sendMessage({}, function(response) {
   const addEventListeners = function() {
     document.addEventListener("keyup", function(e) {
       if (e.code === "Backquote") {
-        alert("todo show/hide");
+        const wrapper = document.getElementById("cext-spotlight-wrapper");
+        wrapper.classList.remove("cext-spotlight-wrapper-disabled");
+        document.getElementById("cext-spotlight-textbox").focus();
+      }
+      if (e.code === "Escape") {
+        const wrapper = document.getElementById("cext-spotlight-wrapper");
+        wrapper.classList.add("cext-spotlight-wrapper-disabled");
       }
       if (e.code === "ArrowDown" || e.code === "ArrowUp") {
         if (currentResults.length !== 0) {

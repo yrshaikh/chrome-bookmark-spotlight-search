@@ -18,15 +18,17 @@
     "bookmarks",
     "history",
     "http://fonts.googleapis.com/",
-    "https://fonts.googleapis.com/"
+    "https://fonts.googleapis.com/",
+    "tabs",
+    "http://*/*"
   ],
   "content_scripts": [
     {
-      "matches": ["https://www.google.com/*", "https://dribbble.com/*"],
+      "matches": ["<all_urls>"],
       "css": ["src/inject/inject.css"]
     },
     {
-      "matches": ["https://www.google.com/*", "https://dribbble.com/*"],
+      "matches": ["<all_urls>"],
       "js": ["src/inject/inject.js"]
     }
   ],
