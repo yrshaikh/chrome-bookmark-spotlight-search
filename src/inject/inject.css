@@ -22,7 +22,7 @@
 }
 
 #cext-spotlight-textbox {
-  color: #BABABA;
+  color: #bababa;
   font-family: "Lato", "Segoe UI", "Arial", serif;
   font-size: 18px !important;
   font-weight: normal !important;
@@ -52,8 +52,14 @@
   font-size: 18px;
   color: #bababa;
 }
+.cext-spotlight-result-li-favicon {
+  position: absolute;
+  left: 15px;
+  height: 30px;
+  margin-top: 7px;
+}
 .cext-spotlight-result-li-selected {
-  background: #4B6EAE;
+  background: #4b6eae;
   color: #fff;
 }
 

@@ -95,6 +95,10 @@ chrome.extension.sendMessage({}, function(response) {
         li.className = "cext-spotlight-result-li-selected";
       }
 
+      const liDivItem0 = document.createElement("img");
+      liDivItem0.className = "cext-spotlight-result-li-favicon";
+      liDivItem0.setAttribute("src", getFaviconUrl(results[i].url));
+
       const liDivItem1 = document.createElement("div");
       liDivItem1.className = "cext-spotlight-result-li-title";
       liDivItem1.textContent = results[i].orignalTitle;
@@ -103,12 +107,24 @@ chrome.extension.sendMessage({}, function(response) {
       liDivItem2.textContent = results[i].url;
       liDivItem2.className = "cext-spotlight-result-li-url";
 
+      li.appendChild(liDivItem0);
       li.appendChild(liDivItem1);
       li.appendChild(liDivItem2);
 
       ul.appendChild(li);
     }
     resultDom.appendChild(ul);
+  };
+
+  const getFaviconUrl = function(url) {
+    let hostname;
+    let protocol = url.split("/")[0];
+    hostname = url.split("/")[2];
+    //find & remove port number
+    hostname = hostname.split(":")[0];
+    //find & remove "?"
+    hostname = hostname.split("?")[0];
+    return protocol + "//" + hostname + "/favicon.ico";
   };
 
   const redirect = function() {
@@ -119,7 +135,5 @@ chrome.extension.sendMessage({}, function(response) {
     window.location.href = href;
   };
 
-  const onArrowDown = function() {
-
-  };
+  const onArrowDown = function() {};
 });
