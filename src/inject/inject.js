@@ -24,20 +24,23 @@ chrome.extension.sendMessage({}, function(response) {
   const getSpotlightDom = function() {
     const dom =
       "<div class='cext-spotlight-textbox-wrapper'>" +
-      "<input type='text' id='cext-spotlight-textbox' placeholder='Search bookmarks' /><" +
+      "<input type='text' id='cext-spotlight-textbox' placeholder='Search bookmarks' />" +
       "</div>" +
       "<div id='cext-spotlight-results'></div>";
     return dom;
   };
 
   const addEventListeners = function() {
-    // document.addEventListener("keydown", function(e) {
-    //   if (e.code === "ShiftLeft") {
-    //     alert("do something");
-    //   }
-    // });
+    document.addEventListener("keydown", function(e) {
+      if (e.code === "Backquote") {
+        alert("todo show/hide");
+      }
+    });
     const searchTextBox = document.getElementById("cext-spotlight-textbox");
     searchTextBox.addEventListener("keydown", function(e) {
+      if (e.code === "ArrowDown") {
+        alert("todo navigate");
+      }
       searchBookmarks(e.target.value);
     });
   };
@@ -77,6 +80,10 @@ chrome.extension.sendMessage({}, function(response) {
     for (let i = 0; i < results.length; i++) {
       const li = document.createElement("li");
       li.id = "cext-spotlight-result-li";
+
+      if (i === 0){
+        li.className = "cext-spotlight-result-li-selected";
+      }
 
       const liDivItem1 = document.createElement("div");
       liDivItem1.className = "cext-spotlight-result-li-title";

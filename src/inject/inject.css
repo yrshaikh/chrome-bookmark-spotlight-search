@@ -3,15 +3,14 @@
  **/
 @import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 #cext-spotlight-wrapper {
-  font-family: 'Arial', serif;
-  background: #373a3f;
+  font-family: "Lato", "Segoe UI", "Arial", serif;
+  background: #323232;
   position: absolute;
   width: 50%;
   top: 100px;
   left: 25%;
   border: 1px solid #373a3f;
   border-radius: 3px;
-  opacity: 0.95;
   z-index: 9999999;
 }
 
@@ -23,20 +22,20 @@
 }
 
 #cext-spotlight-textbox {
-  color: #fff;
-  font-family: 'Arial', serif;
-  font-size: 26px !important;
+  color: #BABABA;
+  font-family: "Lato", "Segoe UI", "Arial", serif;
+  font-size: 18px !important;
+  font-weight: normal !important;
   display: inline-block;
   height: 70px;
   box-sizing: border-box;
   outline: none;
-  background: #373a3f;
   border: 0px;
   padding-left: 60px;
   transition: all 0.1s ease-out;
-  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkViZW5lXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjIuNyAyMi41IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyMi43IDIyLjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxjaXJjbGUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY2NzY2IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgY3g9IjguMSIgY3k9IjguNCIgcj0iNi44Ii8+PGxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY2NzY2IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgeDE9IjEzLjIiIHkxPSIxMi45IiB4Mj0iMjEuNSIgeTI9IjIxLjQiLz48L3N2Zz4=);
-  background-position: left 15px center;
-  background-repeat: no-repeat;
+  background: #323232
+    url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkViZW5lXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjIuNyAyMi41IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyMi43IDIyLjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxjaXJjbGUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY2NzY2IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgY3g9IjguMSIgY3k9IjguNCIgcj0iNi44Ii8+PGxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY2NzY2IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgeDE9IjEzLjIiIHkxPSIxMi45IiB4Mj0iMjEuNSIgeTI9IjIxLjQiLz48L3N2Zz4=)
+    no-repeat left 15px center;
   background-size: 7%;
 }
 
@@ -44,13 +43,17 @@
 }
 
 #cext-spotlight-result-ul {
-  border-top: 1px solid #818180;
+  border-top: 1px solid #646464;
   list-style: none;
 }
 
 #cext-spotlight-result-li {
   padding: 15px 60px;
   font-size: 18px;
+  color: #bababa;
+}
+.cext-spotlight-result-li-selected {
+  background: #4B6EAE;
   color: #fff;
 }
 
@@ -59,5 +62,4 @@
 }
 .cext-spotlight-result-li-url {
   font-size: 14px !important;
-  color: #939499;
 }
