@@ -14,6 +14,9 @@ chrome.extension.sendMessage({}, function(response) {
     }
   }, 10);
 
+  let currentSearchTerm = "";
+  let currentResults = [];
+
   const createSpotlight = function() {
     const spotlight = document.createElement("div");
     spotlight.id = "cext-spotlight-wrapper";
@@ -31,17 +34,25 @@ chrome.extension.sendMessage({}, function(response) {
   };
 
   const addEventListeners = function() {
-    document.addEventListener("keydown", function(e) {
+    document.addEventListener("keyup", function(e) {
       if (e.code === "Backquote") {
         alert("todo show/hide");
       }
     });
     const searchTextBox = document.getElementById("cext-spotlight-textbox");
-    searchTextBox.addEventListener("keydown", function(e) {
+    searchTextBox.addEventListener("keyup", function(e) {
       if (e.code === "ArrowDown") {
-        alert("todo navigate");
+        if (currentResults.length !== 0) {
+          onArrowDown();
+        }
+      } else if (e.code === "NumpadEnter" || e.code === "Enter") {
+        redirect();
       }
-      searchBookmarks(e.target.value);
+
+      if (currentSearchTerm !== e.target.value) {
+        currentSearchTerm = e.target.value;
+        searchBookmarks(e.target.value);
+      }
     });
   };
 
@@ -49,14 +60,13 @@ chrome.extension.sendMessage({}, function(response) {
     chrome.extension.sendMessage({ action: "get-bookmarks" }, function(
       response
     ) {
-      console.log("bookmarks =", response);
       const results = getFilteredResults(searchTerm, response.bookmarks);
-      console.log(results);
+      currentResults = results;
       renderResults(results);
     });
   };
 
-  function getFilteredResults(searchTerm, bookmarks) {
+  const getFilteredResults = function(searchTerm, bookmarks) {
     console.log(searchTerm, bookmarks);
     const matches = [];
     searchTerm = searchTerm.toLowerCase();
@@ -70,9 +80,9 @@ chrome.extension.sendMessage({}, function(response) {
       }
     }
     return matches;
-  }
+  };
 
-  function renderResults(results) {
+  const renderResults = function(results) {
     const resultDom = document.getElementById("cext-spotlight-results");
     resultDom.innerHTML = "";
     const ul = document.createElement("ul");
@@ -80,8 +90,8 @@ chrome.extension.sendMessage({}, function(response) {
     for (let i = 0; i < results.length; i++) {
       const li = document.createElement("li");
       li.id = "cext-spotlight-result-li";
-
-      if (i === 0){
+      li.setAttribute("data-url", results[i].url);
+      if (i === 0) {
         li.className = "cext-spotlight-result-li-selected";
       }
 
@@ -99,5 +109,17 @@ chrome.extension.sendMessage({}, function(response) {
       ul.appendChild(li);
     }
     resultDom.appendChild(ul);
-  }
+  };
+
+  const redirect = function() {
+    const selectedItem = document.getElementsByClassName(
+      "cext-spotlight-result-li-selected"
+    )[0];
+    const href = selectedItem.getAttribute("data-url");
+    window.location.href = href;
+  };
+
+  const onArrowDown = function() {
+
+  };
 });

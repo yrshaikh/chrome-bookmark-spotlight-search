@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02255dec-68c2-4c7a-bc1e-5af2a05c3c00" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/inject/inject.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/inject/inject.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/inject/inject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/inject/inject.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -16,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/inject/inject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="84" column="28" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="57" />
+            <state relative-caret-position="360">
+              <caret line="45" column="10" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -30,7 +29,7 @@
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/inject/inject.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="224">
@@ -50,6 +49,7 @@
       <find>getele</find>
       <find>tolowercase</find>
       <find>&lt;</find>
+      <find>indexof</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -62,8 +62,8 @@
         <option value="$PROJECT_DIR$/src/bg/background.html" />
         <option value="$PROJECT_DIR$/manifest.json" />
         <option value="$PROJECT_DIR$/src/bg/background.js" />
-        <option value="$PROJECT_DIR$/src/inject/inject.js" />
         <option value="$PROJECT_DIR$/src/inject/inject.css" />
+        <option value="$PROJECT_DIR$/src/inject/inject.js" />
       </list>
     </option>
   </component>
@@ -150,12 +150,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1566060512351</updated>
-      <workItem from="1566060513592" duration="13340000" />
+      <workItem from="1566060513592" duration="14590000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13340000" />
+    <option name="totallyTimeSpent" value="14590000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -235,13 +235,6 @@
     <entry file="file://$PROJECT_DIR$/mock.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/inject/inject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="84" column="28" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/inject/inject.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
@@ -249,6 +242,13 @@
           <folding>
             <element signature="e#898#1561#1" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/inject/inject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="45" column="10" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
         </state>
       </provider>
     </entry>
