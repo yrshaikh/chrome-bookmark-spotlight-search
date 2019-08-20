@@ -50,6 +50,8 @@
     border-top: 1px solid #646464;
     list-style: none;
     margin-left: 0px;
+    padding-left: 0px;
+    margin-top: 0px;
 }
 
 .cext-spotlight-result-li {
