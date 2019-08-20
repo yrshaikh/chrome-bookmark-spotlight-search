@@ -3,83 +3,84 @@
  **/
 @import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 #cext-spotlight-wrapper {
-  font-family: "Lato", "Segoe UI", "Arial", serif;
-  background: #323232;
-  position: absolute;
-  width: 50%;
-  top: 50px;
-  left: 25%;
-  border: 1px solid #373a3f;
-  border-radius: 3px;
-  z-index: 9999999;
+    font-family: "Lato", "Segoe UI", "Arial", serif;
+    background: #323232;
+    position: absolute;
+    width: 50%;
+    top: 50px;
+    left: 25%;
+    border: 1px solid #373a3f;
+    border-radius: 3px;
+    z-index: 9999999;
 }
 
 .cext-spotlight-wrapper-disabled {
-  display: none;
+    display: none;
 }
 .cext-spotlight-textbox-icon {
-  height: 50px;
-  position: absolute;
-  top: 15px;
-  left: 15px;
+    height: 50px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
 }
 
 #cext-spotlight-textbox {
-  color: #bababa;
-  font-family: "Lato", "Segoe UI", "Arial", serif;
-  font-size: 16px !important;
-  font-weight: normal !important;
-  display: inline-block;
-  height: 50px;
-  box-sizing: border-box;
-  outline: none;
-  border: 0px;
-  padding-left: 20px;
-  transition: all 0.1s ease-out;
-  background: #323232
-    url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkViZW5lXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjIuNyAyMi41IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyMi43IDIyLjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxjaXJjbGUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY2NzY2IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgY3g9IjguMSIgY3k9IjguNCIgcj0iNi44Ii8+PGxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY2NzY2IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgeDE9IjEzLjIiIHkxPSIxMi45IiB4Mj0iMjEuNSIgeTI9IjIxLjQiLz48L3N2Zz4=)
-    no-repeat right 15px center;
-  background-size: 3%;
-  width: 100%;
+    color: #bababa;
+    font-family: "Lato", "Segoe UI", "Arial", serif;
+    font-size: 16px !important;
+    font-weight: normal !important;
+    display: inline-block;
+    height: 50px;
+    box-sizing: border-box;
+    outline: none;
+    border: 0px;
+    padding-left: 20px;
+    transition: all 0.1s ease-out;
+    background: #323232
+        url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkViZW5lXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjIuNyAyMi41IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyMi43IDIyLjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxjaXJjbGUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY2NzY2IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgY3g9IjguMSIgY3k9IjguNCIgcj0iNi44Ii8+PGxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY2NzY2IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgeDE9IjEzLjIiIHkxPSIxMi45IiB4Mj0iMjEuNSIgeTI9IjIxLjQiLz48L3N2Zz4=)
+        no-repeat right 15px center;
+    background-size: 3%;
+    width: 100%;
 }
 
 #cext-spotlight-results {
 }
 
 #cext-spotlight-result-ul {
-  border-top: 1px solid #646464;
-  list-style: none;
-  margin-left: 0px;
+    border-top: 1px solid #646464;
+    list-style: none;
+    margin-left: 0px;
 }
 
 .cext-spotlight-result-li {
-  padding: 15px 20px;
-  font-size: 18px;
-  color: #bababa;
+    padding: 15px 20px;
+    font-size: 18px;
+    color: #bababa;
 }
 .cext-spotlight-result-li-favicon {
-  position: absolute;
-  left: 15px;
-  height: 20px;
-  margin-top: 7px;
+    position: absolute;
+    left: 15px;
+    height: 20px;
+    margin-top: 7px;
 }
 .cext-spotlight-result-li-selected {
-  background: #4b6eae;
-  color: #fff;
+    background: #4b6eae;
+    color: #fff;
 }
 
 .cext-spotlight-result-li-title,
 .cext-spotlight-result-li-url {
-  font-size: 14px !important;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    font-size: 14px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .cext-spotlight-result-li-url {
-  font-size: 12px !important;
+    font-size: 12px !important;
 }
 .cext-spotlight-results-count {
-  color: #b5b53f;
-  padding: 10px 20px;
-  border-top: 1px solid #646464;
+    color: #b5b53f;
+    padding: 10px 20px;
+    border-top: 1px solid #646464;
+    font-size: 12px;
 }

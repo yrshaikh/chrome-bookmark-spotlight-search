@@ -1,0 +1,22 @@
+{
+  "name": "chrome-bookmark-spotlight-search",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yrshaikh/chrome-bookmark-spotlight-search.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yrshaikh/chrome-bookmark-spotlight-search/issues"
+  },
+  "homepage": "https://github.com/yrshaikh/chrome-bookmark-spotlight-search#readme",
+  "devDependencies": {
+    "eslint": "^6.2.1"
+  }
+}
