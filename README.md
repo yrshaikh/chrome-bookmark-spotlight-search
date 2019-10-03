@@ -5,3 +5,4 @@ HOT KEY - "ALT + B" - Open the bookmark search, use keyboard up and down arrow a
 
 Can be downloaded from the chrome store - https://chrome.google.com/webstore/detail/chrome-bookmark-spotlight/mhapbiljkhhooamoomplmdbfladlgdlp
 
+[Screenshot](/unnamed.png)
