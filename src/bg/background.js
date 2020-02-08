@@ -1,7 +1,7 @@
 let flatennedBookmarks = [];
-chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
+chrome.extension.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.action === "get-bookmarks") {
-        chrome.bookmarks.getTree(function(tree) {
+        chrome.bookmarks.getTree(function (tree) {
             if (flatennedBookmarks.length === 0) flattenBookmarks(tree);
         });
         sendResponse({ bookmarks: flatennedBookmarks });
@@ -17,7 +17,6 @@ function flattenBookmarks(bookmarks) {
                 orignalTitle: bookmark.title,
                 url: bookmark.url
             });
-            //console.log("bookmark: " + bookmark.title + " ~  " + bookmark.url);
         }
         if (bookmark.children) {
             flattenBookmarks(bookmark.children);

@@ -1,12 +1,16 @@
-chrome.extension.sendMessage({}, function(response) {
-    const readyStateCheckInterval = setInterval(function() {
-        if (document.readyState === "complete") {
-            clearInterval(readyStateCheckInterval);
-            const spotlightDiv = createSpotlight();
-            document.body.appendChild(spotlightDiv);
-            addEventListeners();
-            //chrome.bookmarks.getTree(loadBookmarks());
-        }
+
+chrome.extension.sendMessage({}, function (response) {
+    let documentService = new DocumentService();
+
+    const readyStateCheckInterval = setInterval(function () {
+
+        if (!documentService.isValid(document.contentType, document.readyState)) return;
+
+        clearInterval(readyStateCheckInterval);
+        const spotlightDiv = createSpotlight();
+        document.body.appendChild(spotlightDiv);
+        addEventListeners();
+
     }, 10);
 
     let currentSearchTerm = "";
@@ -15,7 +19,7 @@ chrome.extension.sendMessage({}, function(response) {
     let currentFilteredResultsCount = 0;
     let currentLiSelectionIndex = -1;
 
-    const createSpotlight = function() {
+    const createSpotlight = function () {
         const spotlight = document.createElement("div");
         spotlight.id = "cext-spotlight-wrapper";
         spotlight.className = "cext-spotlight-wrapper-disabled";
@@ -23,17 +27,17 @@ chrome.extension.sendMessage({}, function(response) {
         return spotlight;
     };
 
-    const getSpotlightDom = function() {
+    const getSpotlightDom = function () {
         const dom =
             "<div class='cext-spotlight-textbox-wrapper'>" +
-            "<input type='text' id='cext-spotlight-textbox' placeholder='Search bookmarks' />" +
+            "<input type='text' id='cext-spotlight-textbox' placeholder='Search bookmarks (Double tap ESC to exit)' />" +
             "</div>" +
             "<div id='cext-spotlight-results'></div>";
         return dom;
     };
 
-    const addEventListeners = function() {
-        document.addEventListener("keyup", function(e) {
+    const addEventListeners = function () {
+        document.addEventListener("keyup", function (e) {
             console.log(e);
             if (e.code === "KeyB" && e.ctrlKey) {
                 const wrapper = document.getElementById(
@@ -57,7 +61,7 @@ chrome.extension.sendMessage({}, function(response) {
             }
         });
         const searchTextBox = document.getElementById("cext-spotlight-textbox");
-        searchTextBox.addEventListener("keyup", function(e) {
+        searchTextBox.addEventListener("keyup", function (e) {
             if (currentSearchTerm !== e.target.value) {
                 currentSearchTerm = e.target.value;
                 searchBookmarks(e.target.value);
@@ -65,8 +69,8 @@ chrome.extension.sendMessage({}, function(response) {
         });
     };
 
-    const searchBookmarks = function(searchTerm) {
-        chrome.extension.sendMessage({ action: "get-bookmarks" }, function(
+    const searchBookmarks = function (searchTerm) {
+        chrome.extension.sendMessage({ action: "get-bookmarks" }, function (
             response
         ) {
             const results = getFilteredResults(searchTerm, response.bookmarks);
@@ -75,7 +79,7 @@ chrome.extension.sendMessage({}, function(response) {
         });
     };
 
-    const getFilteredResults = function(searchTerm, bookmarks) {
+    const getFilteredResults = function (searchTerm, bookmarks) {
         const matches = [];
         currentFilteredResultsCount = 0;
         searchTerm = searchTerm.toLowerCase();
@@ -97,7 +101,7 @@ chrome.extension.sendMessage({}, function(response) {
         return matches;
     };
 
-    const renderResults = function(results) {
+    const renderResults = function (results) {
         const resultDom = document.getElementById("cext-spotlight-results");
         resultDom.innerHTML = "";
         resultDom.innerHTML =
@@ -114,14 +118,6 @@ chrome.extension.sendMessage({}, function(response) {
                 li.className += " cext-spotlight-result-li-selected";
                 currentLiSelectionIndex = i;
             }
-
-            // const liDivItem0 = document.createElement("img");
-            // liDivItem0.className = "cext-spotlight-result-li-favicon";
-            // liDivItem0.setAttribute(
-            //   "onerror",
-            //   "this.onerror=null;this.src='https://cdn1.iconfinder.com/data/icons/company-identity/100/new-google-favicon-512.png'"
-            // );
-            // liDivItem0.setAttribute("src", getFaviconUrl(results[i].url));
 
             const liDivItem1 = document.createElement("div");
             liDivItem1.className = "cext-spotlight-result-li-title";
@@ -140,7 +136,7 @@ chrome.extension.sendMessage({}, function(response) {
         resultDom.appendChild(ul);
     };
 
-    const getFaviconUrl = function(url) {
+    const getFaviconUrl = function (url) {
         let hostname;
         let protocol = url.split("/")[0];
         hostname = url.split("/")[2];
@@ -151,7 +147,7 @@ chrome.extension.sendMessage({}, function(response) {
         return protocol + "//" + hostname + "/favicon.ico";
     };
 
-    const redirect = function() {
+    const redirect = function () {
         const selectedItem = document.getElementsByClassName(
             "cext-spotlight-result-li-selected"
         )[0];
@@ -159,7 +155,7 @@ chrome.extension.sendMessage({}, function(response) {
         window.location.href = href;
     };
 
-    const rotateLiSelection = function(isDownArrow) {
+    const rotateLiSelection = function (isDownArrow) {
         const results = document.getElementsByClassName(
             "cext-spotlight-result-li"
         );
