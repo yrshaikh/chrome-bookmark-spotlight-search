@@ -1,6 +1,11 @@
 class DocumentService {
 
+    constructor() {
+        this.validContentType = "text/html";
+        this.validState = "complete";
+    }
+
     isValid(contentType, state) {
-        return contentType === "text/html" && state === "complete";
+        return contentType === this.validContentType && state === this.validState;
     }
 }

@@ -1,14 +1,14 @@
 
 chrome.extension.sendMessage({}, function (response) {
     let documentService = new DocumentService();
+    let domService = new DomService();
 
     const readyStateCheckInterval = setInterval(function () {
 
         if (!documentService.isValid(document.contentType, document.readyState)) return;
 
         clearInterval(readyStateCheckInterval);
-        const spotlightDiv = createSpotlight();
-        document.body.appendChild(spotlightDiv);
+        domService.buildSpotlight(document);
         addEventListeners();
 
     }, 10);
@@ -18,23 +18,6 @@ chrome.extension.sendMessage({}, function (response) {
     const maxAllowedFilteredResultCount = 6;
     let currentFilteredResultsCount = 0;
     let currentLiSelectionIndex = -1;
-
-    const createSpotlight = function () {
-        const spotlight = document.createElement("div");
-        spotlight.id = "cext-spotlight-wrapper";
-        spotlight.className = "cext-spotlight-wrapper-disabled";
-        spotlight.innerHTML = getSpotlightDom();
-        return spotlight;
-    };
-
-    const getSpotlightDom = function () {
-        const dom =
-            "<div class='cext-spotlight-textbox-wrapper'>" +
-            "<input type='text' id='cext-spotlight-textbox' placeholder='Search bookmarks (Double tap ESC to exit)' />" +
-            "</div>" +
-            "<div id='cext-spotlight-results'></div>";
-        return dom;
-    };
 
     const addEventListeners = function () {
         document.addEventListener("keyup", function (e) {

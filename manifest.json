@@ -39,7 +39,8 @@
             ],
             "js": [
                 "src/inject/inject.js",
-                "src/services/documentService.js"
+                "src/services/documentService.js",
+                "src/services/domService.js"
             ]
         }
     ]
