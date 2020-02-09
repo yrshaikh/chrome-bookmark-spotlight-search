@@ -40,7 +40,9 @@
             "js": [
                 "src/inject/inject.js",
                 "src/services/documentService.js",
-                "src/services/domService.js"
+                "src/services/domService.js",
+                "src/services/eventService.js",
+                "src/services/bookmarkService.js"
             ]
         }
     ]
